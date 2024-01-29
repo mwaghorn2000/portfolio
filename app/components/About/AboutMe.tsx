@@ -9,12 +9,20 @@ const AboutMe: React.FC = () => {
                 <div className="flex flex-col lg:flex-row ">
                     <div className="lg:w-2/3 p-3">
                         <p className="text-justify">
-                            Dolore qui eiusmod elit incididunt amet non amet ex sunt. Do cillum fugiat minim et proident voluptate sint veniam. Cillum fugiat amet consequat aliqua duis ea consectetur amet.
-
-                            Quis ullamco anim excepteur voluptate deserunt ut velit in cupidatat id. Culpa laboris tempor nostrud et incididunt aliquip est et elit laborum dolor. Do nulla ipsum exercitation officia. Incididunt id consectetur aute eiusmod do minim amet tempor ad fugiat sit dolore. Ullamco qui sunt deserunt do. Est officia dolor irure officia do ad et dolor anim pariatur ad sint do aliquip. Irure nulla quis nisi sit irure officia exercitation qui commodo anim pariatur.
-
-                            Id velit proident laborum ad non nulla consequat pariatur. Dolor qui dolor cillum consequat laborum pariatur consequat culpa elit. Aute aliqua ad cupidatat sit fugiat laboris eiusmod commodo ex. Anim eu nostrud exercitation nostrud in do.
+                            My name is Mitchell Waghorn and im a second year at UNSW, however i&apos;ve been passionate
+                            about coding well before I started studying.
+                            <br />
+                            <br />
+                            Outside of coding I enjoy spending time with my two cats, Coco and Lu, and traveling 
+                            Australia with my partner. The photo is our last trip to the Hunter Valley, NSW.
+                            <br />
+                            <br />
+                            Recently while at Uni I&apos;ve started learning chess, as i love the planning and strategy involved
+                            and as my skills as a developer have increased me and friends spend a lot of time coming up with
+                            ideas for future projects together.
                         </p>
+
+
                     </div>
                     <div className="lg:w-1/3 p-3 m-auto">
                         <Image

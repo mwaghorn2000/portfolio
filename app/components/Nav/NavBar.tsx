@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
                 <ul className="nav list-none  flex w-full justify-center">
                     <li className={`mr-2.5 transition-colors duration-200 hover:text-lime-600 ${isActive('/AboutMe') ? 'active text-lime-600' : ''}`} ><Link href='/AboutMe'>About Me 😎</Link></li>
                     <li className={`mr-2.5 transition-colors duration-200 hover:text-lime-600 ${isActive('/Projects') ? 'active text-lime-600' : ''}`}><Link href='/Projects'>Projects 🚀</Link></li>
-                    <li className={`mr-2.5 transition-colors duration-200 hover:text-lime-600 ${isActive('/Resume') ? 'active text-lime-600' : ''}`}><Link href='/Resume'>Resume 📄</Link></li>
+                    <li className={`mr-2.5 transition-colors duration-200 hover:text-lime-600 ${isActive('/Resume') ? 'active text-lime-600' : ''}`}><Link href=''>Resume 📄</Link></li>
                     <li className={`transition-colors duration-200 hover:text-lime-600 ${isActive('/Blog') ? 'active text-lime-600' : ''}`}><Link href='/Blog'>blog ✍️</Link></li>
                 </ul>
             </div>

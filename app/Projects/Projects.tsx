@@ -25,7 +25,7 @@ const Projects: React.FC = () => {
                             <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Yangstaboi" target='_blank'> William Yang </a>
                              and 
                             <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Arnold45202" target="_blank"> Jackson Wang</a>.
-                            This is a full stack project, As of right now it's still a WIP, and the only game left is poker, which is the most complex part of the app.
+                            This is a full stack project, As of right now it&apos;s still a WIP, and the only game left is poker, which is the most complex part of the app.
                             It uses react, typescript, socket.io and firebase under the hood.
                         </p>
                     </div>
