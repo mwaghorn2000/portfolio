@@ -7,7 +7,7 @@ const Projects: React.FC = () => {
             <div className="about-me py-[20px] mx-auto subpixel-antialiased lg:py-[100px] w-full lg:w-full">
                 <h1 className="py-3 text-2xl font-extrabold text-center">&lt;Projects /&gt;</h1>
                 <h2 className="text-center pb-[35px]">Click on the images to go to the project</h2>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-around'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-around mb-[20px] mx-[20px]'>
                     <div className='m-auto text-center h-[550px]'>
                         <a href="https://mwaghorn2000.github.io/calculator/" target="_blank">
                             <Image className="m-auto h-[363px]" src="/calculator.png" alt="Image of calculator project" width={360} height={360} />
