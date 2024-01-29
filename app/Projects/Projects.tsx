@@ -10,14 +10,14 @@ const Projects: React.FC = () => {
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-around'>
                     <div className='m-auto text-center h-[550px]'>
                         <a href="https://mwaghorn2000.github.io/calculator/" target="_blank">
-                            <Image className="m-auto h-[363px]" src="/../../../calculator.png" alt="Image of calculator project" width={360} height={360} />
+                            <Image className="m-auto h-[363px]" src="/calculator.png" alt="Image of calculator project" width={360} height={360} />
                         </a>
                         <h2 className="text-xl py-3">Calculator</h2>
                         <p className='h-[120px]'>First project i made which used CSS, HTML, and JS. Was proud when i made this, it can even register keyboard inputs</p>
                     </div>
                     <div className='m-auto text-center h-[550px]'>
                         <a href="https://github.com/mwaghorn2000/RISKIT" target="_blank" >
-                            <Image className="m-auto h-[363px]" src="/../../../riskit_logo.png" alt="image of riskit logo" width={360} height={360} />
+                            <Image className="m-auto h-[363px]" src="/riskit_logo.png" alt="image of riskit logo" width={360} height={360} />
                         </a>
                         <h2 className="text-xl py-3">RISKIT</h2>
                         <p className='h-[120px]'>
@@ -31,10 +31,13 @@ const Projects: React.FC = () => {
                     </div>
                     <div className='m-auto text-center h-[550px]'>
                         <a href="https://github.com/mwaghorn2000/portfolio" target="_blank">
-                            <Image className="m-auto h-[363px]" src="/../../../portfolio_img.png" alt="image of homepage of portfolio" width={360} height={360} />
+                            <Image className="m-auto h-[363px]" src="/portfolio_img.png" alt="image of homepage of portfolio" width={360} height={360} />
                         </a>
                         <h2 className="text-xl py-3">My Portfolio</h2>
-                        <p>The website you are on right now. Using next.js for routing, and tailwindCSS for styling. Also features a blog which I use to discuss my projects, and</p>
+                        <p>
+                            The website you are on right now. Using next.js for routing, and tailwindCSS for styling. Also features a blog which I use to discuss my projects, and 
+                            courses I take at UNSW.
+                        </p>
                     </div>
                 </div>
             </div>
