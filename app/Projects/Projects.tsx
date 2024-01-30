@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
                             <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Yangstaboi" target='_blank'> William Yang</a>, 
                             and <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Arnold45202" target="_blank"> Jackson Wang</a>. 
                             Our app, currently a work in progress, features a variety of casino games, with 
-                            Poker as our upcoming addition. Built using <strong>React, TypeScript, Socket.IO, and Firebase</strong>, "Riskit" offers 
+                            Poker as our upcoming addition. Built using <strong>React, TypeScript, Socket.IO, and Firebase</strong>, &quot;Riskit&quot; offers 
                             an engaging and dynamic gaming experience. This will be getting deployed once Poker is complete.
                         </p>
                     </div>
