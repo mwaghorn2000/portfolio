@@ -36,7 +36,7 @@ const AboutMe: React.FC = () => {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between px-3 py-[50px] w-full lg:w-1/2 mx-auto">
+                <div className="flex justify-between px-3 py-[50px] w-full lg:w-1/2 mx-auto mb-[20px]">
                     <Image
                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                         alt="JS logo"
