@@ -6,9 +6,9 @@ const Projects: React.FC = () => {
         <>
             <div className="about-me py-[20px] mx-auto subpixel-antialiased lg:py-[100px] w-full lg:w-full">
                 <h1 className="py-3 text-2xl font-extrabold text-center">&lt;Projects /&gt;</h1>
-                <h2 className="text-center pb-[35px]">Click on the images to go to the project</h2>
+                <h2 className="text-center pb-[35px] font-bold">Click on the images to go to the project</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-around mb-[20px] mx-[20px]'>
-                    <div className='m-auto text-center sm:h-[650px] max-h-[750px] "'>
+                    <div className='m-auto text-center sm:h-[550px] max-h-[650px] "'>
                         <a href="https://mwaghorn2000.github.io/calculator/" target="_blank">
                             <Image className="m-auto h-[363px]" src="/calculator.png" alt="Image of calculator project" width={360} height={360} />
                         </a>
@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
                             <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Yangstaboi" target='_blank'> William Yang</a>, 
                             and <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Arnold45202" target="_blank"> Jackson Wang</a>. 
                             Our app, currently a work in progress, features a variety of casino games, with 
-                            Poker as our upcoming addition. Built using React, TypeScript, Socket.IO, and Firebase, "Riskit" offers 
+                            Poker as our upcoming addition. Built using <strong>React, TypeScript, Socket.IO, and Firebase</strong>, "Riskit" offers 
                             an engaging and dynamic gaming experience. This will be getting deployed once Poker is complete.
                         </p>
                     </div>
