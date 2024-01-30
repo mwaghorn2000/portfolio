@@ -9,17 +9,19 @@ const AboutMe: React.FC = () => {
                 <div className="flex flex-col lg:flex-row ">
                     <div className="lg:w-2/3 p-3">
                         <p className="text-justify">
-                            My name is Mitchell Waghorn and im a second year at UNSW, however i&apos;ve been passionate
-                            about coding well before I started studying.
+                            Hello! I'm <strong className="text-lime-700">Mitchell Waghorn</strong>, currently in my second year at UNSW. 
+                            However, my journey into coding began long before my university studies, fueled by a deep-seated passion for 
+                            technology and innovation.
                             <br />
                             <br />
-                            Outside of coding I enjoy spending time with my two cats, Coco and Lu, and traveling 
-                            Australia with my partner. The photo is our last trip to the Hunter Valley, NSW.
+                            When I'm not coding, I cherish the moments spent with my two cats, Coco and Lu, and exploring the
+                            diverse landscapes of Australia with my partner. Our recent visit to the Hunter Valley, NSW, was
+                            particularly memorable (See photo).
                             <br />
                             <br />
-                            Recently while at Uni I&apos;ve started learning chess, as i love the planning and strategy involved
-                            and as my skills as a developer have increased me and friends spend a lot of time coming up with
-                            ideas for future projects together.
+                            While at university, I've taken up chess, interested by its intricate planning and strategic depth. This
+                            new interest aligns well with my growing expertise as a developer. Im now also among friends who share my enthusiasm
+                            for technology, we often brainstorm and conceptualize future projects, each more exciting than the last.
                         </p>
 
 
