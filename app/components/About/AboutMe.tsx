@@ -9,17 +9,17 @@ const AboutMe: React.FC = () => {
                 <div className="flex flex-col lg:flex-row ">
                     <div className="lg:w-2/3 p-3">
                         <p className="text-justify">
-                            Hello! I'm <strong className="text-lime-700">Mitchell Waghorn</strong>, currently in my second year at UNSW. 
+                            Hello! I&apos;m <strong className="text-lime-700">Mitchell Waghorn</strong>, currently in my second year at UNSW. 
                             However, my journey into coding began long before my university studies, fueled by a deep-seated passion for 
                             technology and innovation.
                             <br />
                             <br />
-                            When I'm not coding, I cherish the moments spent with my two cats, Coco and Lu, and exploring the
+                            When I&apos;m not coding, I cherish the moments spent with my two cats, Coco and Lu, and exploring the
                             diverse landscapes of Australia with my partner. Our recent visit to the Hunter Valley, NSW, was
                             particularly memorable (See photo).
                             <br />
                             <br />
-                            While at university, I've taken up chess, interested by its intricate planning and strategic depth. This
+                            While at university, I&apos;ve taken up chess, interested by its intricate planning and strategic depth. This
                             new interest aligns well with my growing expertise as a developer. Im now also among friends who share my enthusiasm
                             for technology, we often brainstorm and conceptualize future projects, each more exciting than the last.
                         </p>
