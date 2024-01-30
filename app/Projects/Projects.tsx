@@ -8,19 +8,19 @@ const Projects: React.FC = () => {
                 <h1 className="py-3 text-2xl font-extrabold text-center">&lt;Projects /&gt;</h1>
                 <h2 className="text-center pb-[35px]">Click on the images to go to the project</h2>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-around mb-[20px] mx-[20px]'>
-                    <div className='m-auto text-center h-[550px]'>
+                    <div className='m-auto text-center sm:h-[550px] max-h-[650px] "'>
                         <a href="https://mwaghorn2000.github.io/calculator/" target="_blank">
                             <Image className="m-auto h-[363px]" src="/calculator.png" alt="Image of calculator project" width={360} height={360} />
                         </a>
                         <h2 className="text-xl py-3">Calculator</h2>
-                        <p className='h-[120px]'>First project i made which used CSS, HTML, and JS. Was proud when i made this, it can even register keyboard inputs</p>
+                        <p className=''>First project i made which used CSS, HTML, and JS. Was proud when i made this, it can even register keyboard inputs</p>
                     </div>
-                    <div className='m-auto text-center h-[550px]'>
+                    <div className='m-auto text-center sm:h-[550px] max-h-[650px] '>
                         <a href="https://github.com/mwaghorn2000/RISKIT" target="_blank" >
                             <Image className="m-auto h-[363px]" src="/riskit_logo.png" alt="image of riskit logo" width={360} height={360} />
                         </a>
                         <h2 className="text-xl py-3">RISKIT</h2>
-                        <p className='h-[120px]'>
+                        <p className=''>
                             This is a online casino game im working on with two other students at UNSW. 
                             <a className="text-lime-600 hover:text-lime-900 transition-colors duration-200" href="https://github.com/Yangstaboi" target='_blank'> William Yang </a>
                              and 
@@ -29,7 +29,7 @@ const Projects: React.FC = () => {
                             It uses react, typescript, socket.io and firebase under the hood.
                         </p>
                     </div>
-                    <div className='m-auto text-center h-[550px]'>
+                    <div className='m-auto text-center sm:h-[550px] max-h-[650px] '>
                         <a href="https://github.com/mwaghorn2000/portfolio" target="_blank">
                             <Image className="m-auto h-[363px]" src="/portfolio_img.png" alt="image of homepage of portfolio" width={360} height={360} />
                         </a>
