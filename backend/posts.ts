@@ -23,7 +23,7 @@ export const getPost = async (db: any, postId: string) => {
     try {
         const post = await db.collection('posts').findOne({ _id: new ObjectId(postId) });
 
-        // Showdown library which converts markdown into html
+        //Showdown library which converts markdown into html
         let showdown = require('showdown'),
             converter = new showdown.Converter({ headerLevelStart: 3 }),
             text = post.content,

@@ -39,7 +39,7 @@ const Post: React.FC<PostProps> = ({
 
     return (
         <>
-            <div className=" md:w-2/3 md:m-auto mx-[20px] ">
+            <div className=" md:w-2/3 md:m-auto mx-[20px]  ">
                 <div className="title text-center my-[50px] grid md:grid-cols-6 items-center gap-4">
                     <div className="flex justify-start collapse md:visible">
                         <Link className="py-3 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300" href="/Blog">
@@ -61,7 +61,7 @@ const Post: React.FC<PostProps> = ({
                     </div>
                 </div>
 
-                <div className="">
+                <div className="mb-[200px]">
                     <p className="m-auto prose prose-lg" dangerouslySetInnerHTML={{ __html: post?.content as string }}>
                     </p>
                 </div>
