@@ -4,12 +4,13 @@ import { getPosts } from '@/backend/posts';
 export const dynamic = 'force-dynamic'
 
 export async function GET(res: NextApiResponse, req: NextApiRequest) {
-    const { db } = await connectToDatabase();
-    const posts = await getPosts(db);
-
-    return Response.json({ posts });
-}
-
-export async function POST(res: NextApiResponse, req: NextApiRequest) {
-
+    try {
+        const { db } = await connectToDatabase();
+        const posts = await getPosts(db);
+        return Response.json({ posts });
+    } catch {
+        return new Response('Error: Failed to fetch posts', {
+            status: 500
+        });
+    }
 }
