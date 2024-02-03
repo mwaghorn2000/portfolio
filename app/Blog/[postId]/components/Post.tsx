@@ -42,9 +42,9 @@ const Post: React.FC<PostProps> = ({
             <div className=" md:w-2/3 md:m-auto mx-[20px] ">
                 <div className="title text-center my-[50px] grid md:grid-cols-6 items-center gap-4">
                     <div className="flex justify-start collapse md:visible">
-                        <Link className="pt-2 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300" href="/Blog">
-                            <span className="material-symbols-outlined">
-                                arrow_back
+                        <Link className="py-3 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300" href="/Blog">
+                            <span className="material-symbols-outlined font-bold">
+                                Back
                             </span>
                         </Link>
                     </div>
@@ -53,9 +53,9 @@ const Post: React.FC<PostProps> = ({
                         <h2 className="text-xl font-bold">{post ? post.author : ""}</h2>
                     </div>
                     <div className="flex justify-end collapse md:visible">
-                        <button className="pt-2 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300">
-                            <span className="material-symbols-outlined">
-                                favorite
+                        <button className=" py-3 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300">
+                            <span className="material-symbols-outlined font-bold">
+                                Like
                             </span>
                         </button>
                     </div>
