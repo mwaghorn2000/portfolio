@@ -11,5 +11,5 @@ export async function GET(res: NextApiResponse, req: NextApiRequest) {
 }
 
 export async function POST(res: NextApiResponse, req: NextApiRequest) {
-    
+
 }
