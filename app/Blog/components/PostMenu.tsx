@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { PostThumbNail } from './PostThumbnail';
-import Loading from '../loading';
 import Link from 'next/link';
 import { BlogPost } from '@/backend/interfaces';
 
@@ -46,7 +45,7 @@ const PostMenu: React.FC = () => {
     return (
         <>
             <div className=" mx-[15px] md:w-2/3 md:mx-auto lg:w-1/3">
-                {loading ? <Loading /> : postComponents}
+                {postComponents}
             </div>
         </>
     )
