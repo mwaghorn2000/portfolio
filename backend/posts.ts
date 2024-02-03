@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb';
+import sanitizeHtml from 'sanitize-html';
 
 class HttpError extends Error {
     statusCode: number;
@@ -21,6 +22,23 @@ export const getPosts = async (db: any) => {
 export const getPost = async (db: any, postId: string) => {
     try {
         const post = await db.collection('posts').findOne({ _id: new ObjectId(postId) });
+
+        // Showdown library which converts markdown into html
+        let showdown = require('showdown'),
+            converter = new showdown.Converter({ headerLevelStart: 3 }),
+            text = post.content,
+            html = converter.makeHtml(text);
+
+        html = sanitizeHtml(html, {
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+            allowedAttributes: {
+                ...sanitizeHtml.defaults.allowedAttributes,
+                'img': ['src', 'alt']
+            }
+        });
+
+        post.content = html;
+
         return post;
     } catch (error: any) {
         throw new HttpError('Failed to fetch posts', 500);

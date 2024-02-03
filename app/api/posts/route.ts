@@ -3,7 +3,7 @@ import { connectToDatabase } from '@/app/lib/mongodb';
 import { getPosts } from '@/backend/posts';
 export const dynamic = 'force-dynamic'
 
-export async function GET(res: NextApiResponse, req: NextApiRequest) {
+export async function GET() {
     try {
         const { db } = await connectToDatabase();
         const posts = await getPosts(db);

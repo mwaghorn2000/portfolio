@@ -31,22 +31,21 @@ const PostMenu: React.FC = () => {
     }, []);
 
     const postComponents = posts.map((post) => (
-        <Link href={`/Blog/${post._id}`}>
+        <Link key={post._id} href={`/Blog/${post._id}`}>
             <PostThumbNail
-                key={post._id} // Assuming `post.id` is a unique identifier
+                key={post._id} 
                 title={post.title}
                 author={post.author}
                 datePublished={post.datePublished}
                 likes={post.likes}
             />
         </Link>
-
     ));
 
 
     return (
         <>
-            <div className="border-2 rounded-xl border-lime-600 w-2/3 mx-auto">
+            <div className=" w-2/3 mx-auto">
                 {loading ? <Loading /> : postComponents}
             </div>
         </>
