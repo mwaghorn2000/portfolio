@@ -45,7 +45,7 @@ const PostMenu: React.FC = () => {
 
     return (
         <>
-            <div className=" w-2/3 mx-auto">
+            <div className=" mx-[15px] md:w-2/3 md:mx-auto lg:w-1/3">
                 {loading ? <Loading /> : postComponents}
             </div>
         </>

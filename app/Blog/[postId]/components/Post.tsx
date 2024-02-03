@@ -61,8 +61,8 @@ const Post: React.FC<PostProps> = ({
                     </div>
                 </div>
 
-                <div>
-                    <p className="prose prose-lg" dangerouslySetInnerHTML={{ __html: post?.content as string }}>
+                <div className="">
+                    <p className="m-auto prose prose-lg" dangerouslySetInnerHTML={{ __html: post?.content as string }}>
                     </p>
                 </div>
             </div>
