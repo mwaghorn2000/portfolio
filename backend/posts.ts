@@ -20,7 +20,7 @@ export const getPosts = async (db: any) => {
 
 export const getPost = async (db: any, postId: string) => {
     try {
-        const post = await db.collection('post').findOne({ _id: new ObjectId(postId) });
+        const post = await db.collection('posts').findOne({ _id: new ObjectId(postId) });
         return post;
     } catch (error: any) {
         throw new HttpError('Failed to fetch posts', 500);

@@ -1,8 +1,8 @@
 export interface BlogPost {
-    userId: string;
+    _id: string;
     title: string;
     content: string;
     author: string;
     likes: number;
-    datePublished: string;
+    datePublished: Date;
 }
