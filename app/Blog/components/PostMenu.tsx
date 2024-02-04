@@ -9,7 +9,6 @@ import { BlogPost } from '@/backend/interfaces';
 
 const PostMenu: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -24,9 +23,8 @@ const PostMenu: React.FC = () => {
                 console.error("Error fetching posts:", error);
             }
         }
-
+        
         fetchPosts();
-        setLoading(false); ''
     }, []);
 
     const postComponents = posts.map((post) => (
