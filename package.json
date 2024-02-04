@@ -30,7 +30,7 @@
     "@types/markdown-it": "^13.0.7",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^18.2.52",
     "@types/react-dom": "^18",
     "@types/sanitize-html": "^2.9.5",
     "@types/validator": "^13.11.8",
