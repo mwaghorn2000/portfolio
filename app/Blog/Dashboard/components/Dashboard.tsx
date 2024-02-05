@@ -2,11 +2,13 @@
 
 import React from 'react';
 import Posts from './Posts'
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
-    
-    const handleCreatePost = () => {
+    const router = useRouter()
 
+    const handleCreatePost = () => {
+        router.push('/Blog/Dashboard/CreatePost')
     }
 
     return (
