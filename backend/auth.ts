@@ -25,8 +25,6 @@ const checkPassword = async (password: string, hash: string) => {
   }
 }
 
-
-
 const JWT_SECRET = process.env.JWT_SECRET; // Store this secret in your .env file
 
 const generateToken = (user: any) => {
