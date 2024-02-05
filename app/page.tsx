@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import React from "react";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         </h2>
         <Link className="py-3.5 px-[50px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300" href="/AboutMe">Enter </Link>
       </div>
-      <style jsx>{`
+      <style>{`
         .typing-cursor {
           animation: blink-cursor 1s steps(5, start) infinite;
         }
