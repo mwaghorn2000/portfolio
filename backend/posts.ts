@@ -92,8 +92,6 @@ export const submitData = async (data: { title: string, author: string, content:
     console.log(`New document inserted with the _id: ${result.insertedId}`);
   } catch (error) {
     console.error('Error inserting data:', error);
-  } finally {
-    await client.close(); // Close the connection when done
   }
 }
 
