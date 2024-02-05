@@ -1,20 +1,45 @@
 'use client'
 
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import create from './action';
 
 const LoginForm = () => {
     // State to store the username and password
+    const router = useRouter()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [redirect, setRedirect] = useState< string | null >(null);
 
     // Function to handle form submission
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault(); // Prevent the default form submit action
-        console.log('Submitting', { username, password });
         // Here, you can add your logic to send the username and password to your server
-
-
+        try {
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                body: JSON.stringify({ username: username, password: password }),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            if (res.ok) {
+                const token = await res.json();
+                await create(token);
+                setRedirect('/Blog/Dashboard');
+            } else {
+                
+            }
+        } catch (error) {
+            console.log(error)
+        }
     };
+
+    useEffect(() => {
+        if (redirect) {
+           router.push(redirect); 
+        }
+    }, [redirect]);
 
     return (
         <>
@@ -48,7 +73,7 @@ const LoginForm = () => {
                     </div>
                 </form>
             </div>
-            <style jsx>{`
+            <style>{`
                 .form-container {
                     box-shadow: 0px 0px 88px -24px rgb(55 65 81);;
             `}</style>

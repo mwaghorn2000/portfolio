@@ -1,7 +1,8 @@
 import { ObjectId } from 'mongodb';
 import sanitizeHtml from 'sanitize-html';
 
-class HttpError extends Error {
+
+export class HttpError extends Error {
     statusCode: number;
     constructor(message: string, statusCode: number) {
         super(message);
@@ -13,6 +14,7 @@ class HttpError extends Error {
 export const getPosts = async (db: any) => {
     try {
         const posts = await db.collection('posts').find({}).toArray();
+        console.log(posts);
         return posts;
     } catch (error: any) {
         throw new HttpError('Failed to fetch posts', 500);

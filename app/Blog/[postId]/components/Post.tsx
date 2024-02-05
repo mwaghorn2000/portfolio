@@ -1,6 +1,6 @@
 'use client'
 
-import { BlogPost } from "@/backend/interfaces";
+import { BlogPost } from "../../../../backend/interfaces";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -66,7 +66,7 @@ const Post: React.FC<PostProps> = ({
                     </p>
                 </div>
             </div>
-            <style jsx>{`
+            <style>{`
                 <style>
                 .material-symbols-outlined {
                   font-variation-settings:
