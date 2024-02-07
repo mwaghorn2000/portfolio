@@ -28,6 +28,7 @@ export default function Dashboard() {
         <PostItem
             key={post._id}
             title={post.title}
+            _id={post._id}
         />
     ));
 

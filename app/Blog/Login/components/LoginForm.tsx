@@ -10,6 +10,7 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState< string | null >(null);
+    const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false);
 
     // Function to handle form submission
     const handleSubmit = async (e: any) => {
@@ -24,11 +25,12 @@ const LoginForm = () => {
                 }
             })
             if (res.ok) {
+                setInvalidCredentials(false);
                 const token = await res.json();
                 await create(token);
                 setRedirect('/Blog/Dashboard');
             } else {
-                
+                setInvalidCredentials(true);
             }
         } catch (error) {
             console.log(error)
@@ -49,7 +51,7 @@ const LoginForm = () => {
                     <div className="mb-[2rem]">
                         <label className="font-bold" htmlFor="username">Username<br /></label>
                         <input
-                            className='border-[1px] border-b-[3px] w-full rounded-md h-[40px] focus:border-lime-600 outline-none px-[10px]'
+                            className={`border-[1px] ${invalidCredentials ? "border-red-500" : ""} ${invalidCredentials ? "focus:border-red-500" : "focus:border-lime-600"} border-b-[3px] w-full rounded-md h-[40px]  outline-none px-[10px]`}
                             id="username"
                             type="text"
                             value={username}
@@ -60,7 +62,7 @@ const LoginForm = () => {
                     <div className="mb-[2rem]">
                         <label className="font-bold" htmlFor="password">Password<br /></label>
                         <input
-                            className='border-[1px] border-b-[3px] w-full rounded-md h-[40px] focus:border-lime-600 outline-none px-[10px]'
+                            className={`border-[1px] border-b-[3px] w-full rounded-md h-[40px] ${invalidCredentials ? "border-red-500" : ""} ${invalidCredentials ? "focus:border-red-500" : "focus:border-lime-600"}  outline-none px-[10px]`}
                             id="password"
                             type="password"
                             value={password}
@@ -69,7 +71,7 @@ const LoginForm = () => {
                         />
                     </div>
                     <div className='text-center mb-[90px] mt-[70px]'>
-                        <button className="h-[50px] w-[300px] bg-lime-400 rounded-xl font-bold" type="submit">Login to Dashboard</button>
+                        <button className="h-[50px] w-[300px] bg-lime-400 rounded-xl font-bold hover:bg-lime-500 active:bg-lime-400" type="submit">Login to Dashboard</button>
                     </div>
                 </form>
             </div>

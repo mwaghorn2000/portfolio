@@ -1,13 +1,18 @@
+import { useRouter } from 'next/navigation';
+
 interface PostItemProps {
     title: string;
+    _id: string
 }
 
 const PostItem: React.FC<PostItemProps> = ({
-    title
+    title,
+    _id,
 }) => {
+    const router = useRouter();
 
     const handleUpdate = (e: any) => {
-
+        router.push(`/Blog/Dashboard/${_id}`)
     }
 
     const handleDelete = (e: any) => {
