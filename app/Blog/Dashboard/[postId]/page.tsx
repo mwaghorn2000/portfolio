@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { postId: string } }) {
         const fetchPost = async () => {
 
             try {
-                const res = await fetch(`http://localhost:3000/api/posts/dashboard/${params.postId}`);
+                const res = await fetch(`/api/posts/dashboard/${params.postId}`);
                 if (!res.ok) {
                     throw Error("Failed to fetch post");
                 }   
