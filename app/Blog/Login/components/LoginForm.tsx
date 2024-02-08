@@ -41,7 +41,7 @@ const LoginForm = () => {
         if (redirect) {
            router.push(redirect); 
         }
-    }, [redirect]);
+    }, [redirect, router]);
 
     return (
         <>

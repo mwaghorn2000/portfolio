@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import PostForm from "./components/PostForm";
 import { BlogPost } from "@/backend/interfaces";
 
-export default function page({ params }: { params: { postId: string } }) {
+export default function Page({ params }: { params: { postId: string } }) {
     const [post, setPost] = useState<BlogPost | null>(null);
 
     useEffect(() => {
@@ -24,12 +24,8 @@ export default function page({ params }: { params: { postId: string } }) {
         }
 
         fetchPost();
-    }, []);
-
-    // useEffect(() => {
-
-    // }, [post]);
-
+    }, [params.postId]);
+    
     return (
         <>
             <div>
