@@ -125,3 +125,15 @@ export const updatePost = async (_id: string, title: string, author: string, con
     }
 } 
 
+export const deletePost = async (_id: string) => {
+    const { db } = await connectToDatabase();
+
+    try {
+        const collection = db.collection('posts');
+        await collection.deleteOne({ _id: new ObjectId(_id) });
+        console.log(`Post ${_id} deleted`);
+    } catch (error: any) {
+        throw new HttpError(error, 500);
+    }
+}
+
