@@ -43,7 +43,16 @@ export const getPost = async (db: any, postId: string) => {
 
         return post;
     } catch (error: any) {
-        throw new HttpError('Failed to fetch posts', 500);
+        throw new HttpError('Failed to fetch post', 500);
+    }
+}
+
+export const getPostMarkdown = async (db: any, postId: string) => {
+    try {
+        const post = await db.collection('posts').findOne({ _id: new ObjectId(postId) });
+        return post;
+    } catch (error: any) {
+        throw new HttpError('Failed to fetch post', 500);
     }
 }
 
@@ -93,5 +102,38 @@ export const submitData = async (data: { title: string, author: string, content:
   } catch (error) {
     console.error('Error inserting data:', error);
   }
+}
+
+export const updatePost = async (_id: string, title: string, author: string, content: string) => {
+    const { db } = await connectToDatabase();
+
+    try {
+        const collection = db.collection('posts');
+        const result = await collection.updateOne(
+            {_id: new ObjectId(_id) },
+            {
+                $set: {
+                    title: title,
+                    author: author,
+                    content: content
+                }
+            }
+        );
+        console.log(`Document updated with the _id: ${_id}`);
+    } catch (error: any) {
+        throw new HttpError("Failed to update post!", 500);
+    }
+} 
+
+export const deletePost = async (_id: string) => {
+    const { db } = await connectToDatabase();
+
+    try {
+        const collection = db.collection('posts');
+        await collection.deleteOne({ _id: new ObjectId(_id) });
+        console.log(`Post ${_id} deleted`);
+    } catch (error: any) {
+        throw new HttpError(error, 500);
+    }
 }
 

@@ -2,7 +2,7 @@
 
 import { BlogPost } from "../../../../backend/interfaces";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";;
 
 interface PostProps {
     _id: string;
@@ -11,6 +11,8 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({
     _id
 }) => {
+    const router = useRouter();
+
     const [post, setPost] = useState<BlogPost | null>(null);
 
     useEffect(() => {
@@ -37,16 +39,20 @@ const Post: React.FC<PostProps> = ({
         formattedDate = dateObject.toISOString().split('T')[0];
     }
 
+    const handleBack = () => {
+        router.back();
+    }
+
     return (
         <>
             <div className=" md:w-2/3 md:m-auto mx-[20px]  ">
                 <div className="title text-center my-[50px] grid md:grid-cols-6 items-center gap-4">
                     <div className="flex justify-start collapse md:visible">
-                        <Link className="py-3 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300" href="/Blog">
+                        <button onClick={handleBack} className="py-3 px-[25px] bg-lime-400 text-center rounded-lg transition-colors hover:bg-lime-500 duration-300">
                             <span className="material-symbols-outlined font-bold">
                                 Back
                             </span>
-                        </Link>
+                        </button>
                     </div>
                     <div className="col-span-4">
                         <h1 className="text-3xl font-extrabold">{post ? post.title : ""}</h1>
