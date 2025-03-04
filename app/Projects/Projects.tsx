@@ -16,7 +16,7 @@ const Projects: React.FC = () => {
                         <p className=''>First project i made which used CSS, HTML, and JS. Was proud when i made this, it can even register keyboard inputs</p>
                     </div>
                     <div className='m-auto text-center sm:h-[550px]'>
-                        <a className="py-[133.8px]" href="https://github.com/mwaghorn2000/RISKIT" target="_blank">
+                        <a className="py-[133.8px]" href="https://riskit.vercel.app/" target="_blank">
                             <div className="py-[133.8px]">
                                 <h1 className="text-8xl font-extrabold">RISKIT</h1>
                             </div>
