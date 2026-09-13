@@ -79,7 +79,7 @@ export default function PostEditor({ post }: { post?: BlogPost }) {
             if (!response.ok) {
                 if (response.status === 401) throw new Error('Your session expired. Your draft stays on this device; sign in again to publish.');
                 const result = await response.json().catch(() => ({}));
-                throw new Error(result.error || 'Your entry could not be saved. Please try again.');
+                throw new Error(result.error || 'Your post could not be saved. Please try again.');
             }
             published.current = true;
             try { localStorage.removeItem(key); } catch { /* The post is saved even if browser storage is unavailable. */ }
@@ -97,24 +97,24 @@ export default function PostEditor({ post }: { post?: BlogPost }) {
         { label: 'Image', before: '![', after: '](https://example.com/image.jpg)', text: 'Image description' },
     ];
     return <main className="blog-wrap">
-        <Link href="/Blog/Dashboard" className="text-sm font-semibold text-lime-700">← All entries</Link>
+        <Link href="/Blog/Dashboard" className="text-sm font-semibold text-lime-700">← All posts</Link>
         <form onSubmit={save} className="mt-7">
-            <header className="mb-8 flex flex-wrap items-end justify-between gap-5"><div><p className="blog-eyebrow">{post ? 'Make it your best version' : 'From an idea to an entry'}</p><h1 className="mt-3 text-4xl font-extrabold tracking-tight">{post ? 'Edit entry' : 'A fresh page.'}</h1></div><button className="blog-button" disabled={busy || !!recovery}>{busy ? 'Saving…' : post ? 'Save changes' : 'Publish entry →'}</button></header>
+            <header className="mb-8 flex flex-wrap items-end justify-between gap-5"><div><p className="blog-eyebrow">Post editor</p><h1 className="mt-3 text-4xl font-extrabold tracking-tight">{post ? 'Edit post' : 'Create post'}</h1></div><button className="blog-button" disabled={busy || !!recovery}>{busy ? 'Saving…' : post ? 'Save changes' : 'Publish post →'}</button></header>
             {recovery && <div className="mb-5 rounded-xl border border-lime-300 bg-lime-50 p-5"><p className="font-semibold">You have a saved local draft.</p><p className="blog-muted mt-1">Restore your unfinished writing, or discard the local copy to continue.</p><div className="mt-3 flex gap-3"><button type="button" className="blog-button" onClick={() => { setTitle(recovery.title); setContent(recovery.content); setRecovery(null); }}>Restore draft</button><button type="button" className="blog-secondary" onClick={() => { try { localStorage.removeItem(key); } catch {} setRecovery(null); }}>Discard local draft</button></div></div>}
             {error && <p role="alert" className="blog-error mb-5">{error} <Link href="/Blog/Login" className="underline">Author login</Link></p>}
             <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
                 <div className="blog-panel min-w-0">
-                    <label htmlFor="post-title" className="mb-2 block text-sm font-semibold">Entry title</label>
-                    <input id="post-title" className="blog-input text-xl font-bold" placeholder="Give your idea a title…" value={title} maxLength={120} onChange={event => setTitle(event.target.value)} required disabled={busy || !!recovery} />
+                    <label htmlFor="post-title" className="mb-2 block text-sm font-semibold">Post title</label>
+                    <input id="post-title" className="blog-input text-xl font-bold" placeholder="Enter a post title…" value={title} maxLength={120} onChange={event => setTitle(event.target.value)} required disabled={busy || !!recovery} />
                     <div className="mb-6 mt-2 text-right text-xs text-stone-500">{title.length}/120</div>
-                    <div className="mb-3 flex items-center justify-between gap-3"><label htmlFor="post-content" className="text-sm font-semibold">Your story</label><div className="flex gap-2"><button type="button" aria-pressed={!preview} className={!preview ? 'blog-button !px-3 !py-2' : 'blog-secondary !px-3 !py-2'} onClick={() => setPreview(false)}>Write</button><button type="button" aria-pressed={preview} className={preview ? 'blog-button !px-3 !py-2' : 'blog-secondary !px-3 !py-2'} onClick={() => setPreview(true)}>Preview</button></div></div>
+                    <div className="mb-3 flex items-center justify-between gap-3"><label htmlFor="post-content" className="text-sm font-semibold">Post content</label><div className="flex gap-2"><button type="button" aria-pressed={!preview} className={!preview ? 'blog-button !px-3 !py-2' : 'blog-secondary !px-3 !py-2'} onClick={() => setPreview(false)}>Write</button><button type="button" aria-pressed={preview} className={preview ? 'blog-button !px-3 !py-2' : 'blog-secondary !px-3 !py-2'} onClick={() => setPreview(true)}>Preview</button></div></div>
                     {!preview ? <><div className="flex flex-wrap gap-2 rounded-t-xl border border-b-0 border-stone-300 bg-stone-50 p-2">
                         {formatting.map(item => <button key={item.label} type="button" disabled={busy || !!recovery} className="rounded-md px-2 py-1 text-xs font-semibold hover:bg-stone-200" onClick={() => insert(item.before, item.after, item.text)}>{item.label}</button>)}
                     </div><textarea ref={textarea} id="post-content" className="blog-input min-h-[460px] resize-y rounded-t-none font-mono text-sm leading-7" placeholder="Start writing here. Markdown is supported." value={content} maxLength={200000} onChange={event => setContent(event.target.value)} disabled={busy || !!recovery} /></> :
                     <div className="min-h-[460px] rounded-xl border border-stone-200 p-5" aria-label="Post preview">{previewLoading ? <p role="status" className="blog-muted">Preparing preview…</p> : previewError ? <p role="alert" className="blog-error">{previewError}</p> : content.trim() ? <div className="blog-prose" dangerouslySetInnerHTML={{ __html: html }} /> : <p className="blog-muted">Your preview will appear once you start writing.</p>}</div>}
                     <div className="mt-3 flex flex-wrap justify-between gap-2 text-xs text-stone-500"><span>{words} words · {readingTime(content)} min read</span><span role="status">{draftStatus}</span></div>
                 </div>
-                <aside className="space-y-5"><div className="blog-panel"><h2 className="font-bold">Publishing</h2><p className="blog-muted mt-3">By Mitchell Waghorn</p><p className="blog-muted mt-3">{post ? 'Saving changes updates your published entry immediately.' : 'Publishing makes this entry visible in your journal.'}</p><p className="blog-muted mt-3">Unpublished drafts are saved on this browser only.</p></div><div className="blog-panel"><h2 className="font-bold">A few writing tips</h2><ul className="blog-muted mt-3 list-disc space-y-2 pl-4"><li>Start with what you learned.</li><li>Break longer posts into headings.</li><li>Use the preview before publishing.</li><li>Add image descriptions for accessibility.</li></ul></div></aside>
+                <aside className="space-y-5"><div className="blog-panel"><h2 className="font-bold">Publishing details</h2><p className="blog-muted mt-3">Author: Mitchell Waghorn</p><p className="blog-muted mt-3">{post ? 'Saving applies these changes to the published post immediately.' : 'Publishing adds this post to the public blog immediately.'}</p><p className="blog-muted mt-3">Unpublished changes are saved in this browser only.</p></div><div className="blog-panel"><h2 className="font-bold">Before publishing</h2><ul className="blog-muted mt-3 list-disc space-y-2 pl-4"><li>Use headings to organise longer posts.</li><li>Check formatting in Preview.</li><li>Add descriptions to images.</li><li>Review the title and links.</li></ul></div></aside>
             </div>
         </form>
     </main>;
