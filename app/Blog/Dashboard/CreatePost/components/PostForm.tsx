@@ -10,7 +10,7 @@ const PostForm: React.FC = () => {
     const [author, setAuthor] = useState<string>('');
     const [content, setContent] = useState<string>('');
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {

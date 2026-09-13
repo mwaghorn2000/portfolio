@@ -6,8 +6,6 @@ import PostItem from './PostItem';
 
 export default function Dashboard() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [displayWarning, setDisplayWarning] = useState<boolean>(false);
-    const [postToDelete, setPostToDelete] = useState<string | null>(null);
 
     const getPosts = async () => {
         try {
@@ -34,8 +32,7 @@ export default function Dashboard() {
             if (!res.ok) {
                 throw new Error('Error deleting post');
             }
-            const updatedPosts = posts.filter(post => post._id !== _id);
-            setPosts(updatedPosts);
+            setPosts(currentPosts => currentPosts.filter(post => post._id !== _id));
         } catch (error: any) {
             console.error('Error Deleting post', error);
         }

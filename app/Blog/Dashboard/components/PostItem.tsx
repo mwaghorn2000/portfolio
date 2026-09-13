@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+
 
 interface PostItemProps {
     title: string;
@@ -14,7 +14,7 @@ const PostItem: React.FC<PostItemProps> = ({
 }) => {
     const router = useRouter();
 
-    const [displayWarning, setDisplayWarning] = useState<boolean>(false);
+
 
     const handleUpdate = () => {
         router.push(`/Blog/Dashboard/${_id}`)

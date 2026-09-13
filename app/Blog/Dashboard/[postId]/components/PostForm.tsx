@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { setConfig } from "next/config";
+
 
 interface PostFormProps {
     title: string;
@@ -24,13 +24,13 @@ const PostForm: React.FC<PostFormProps> = ({
     const [content, setContent] = useState<string>('');
     
     useEffect(() => {
-        if (initialTitle) setTitle(initialTitle);
-        if (initialAuthor) setAuthor(initialAuthor);
-        if (initialContent) setContent(initialContent);
+        setTitle(initialTitle);
+        setAuthor(initialAuthor);
+        setContent(initialContent);
       }, [initialTitle, initialAuthor, initialContent]);
 
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {

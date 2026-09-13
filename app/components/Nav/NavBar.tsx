@@ -31,10 +31,6 @@ const NavBar: React.FC = () => {
             </div>
 
             <style jsx>{`
-                .active {
-                    text
-                }
-
                 .nav li:not(:last-child)::after {
                     content: " / ";
                     margin-left: 7px;

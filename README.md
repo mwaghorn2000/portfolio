@@ -28,3 +28,25 @@ There's not really much more going on in the dashboard at the moment. However it
 Hosted and Deployed on Vercel
 
 ### Contact me @ m.waghorn2000@gmail.com
+
+## Running locally
+
+Use Node.js and npm in your Ubuntu/WSL terminal. If you installed Node with nvm, load it first:
+
+```bash
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+nvm use 24
+```
+
+Install dependencies with `npm ci`. Copy `.env.example` to `.env.local` if you do not already have a local configuration, then fill in:
+
+- `MONGODB_URI`: your MongoDB connection string.
+- `MONGODB_DB`: the existing database name if you want your original posts and login.
+- `JWT_SECRET`: a random secret generated using the command in `.env.example`.
+
+Keep `.env.local` private; it is ignored by Git. Start the app with `npm run dev` and open http://localhost:3000. Restart the development server after changing environment variables.
+
+The blog is at `/Blog` and the author login is at `/Blog/Login`. The database needs a `posts` collection and a `users` collection. Login expects a user document with `username` and a bcrypt hash in `password`. A fresh database will not contain your previous posts or an author account.
+
+Run `npm test -- --runInBand` and `npm run lint` to check the code.

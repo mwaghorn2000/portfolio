@@ -1,30 +1,32 @@
+import { NextResponse, NextRequest } from 'next/server';
 
-import { NextResponse } from 'next/server'
-import { NextRequest } from 'next/server'
-
-// This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-    let cookie = request.cookies.get('token')
+    const unauthorized = () => request.nextUrl.pathname.startsWith('/api/')
+        ? NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        : NextResponse.redirect(new URL('/Blog/Login', request.url));
+    const token = request.cookies.get('token')?.value;
+    if (!token) return unauthorized();
+
     try {
-        const url = new URL('/api/tokenAuth', request.nextUrl.origin);
-        const response = await fetch(url.toString(), {
+        const response = await fetch(new URL('/api/tokenAuth', request.nextUrl.origin), {
             method: 'POST',
-            body: JSON.stringify({ token: cookie?.value }),
-            headers: {
-                'content-type': 'application/json'
-            }
+            body: JSON.stringify({ token }),
+            headers: { 'content-type': 'application/json' },
+            cache: 'no-store',
         });
-        if (!response.ok) {
-            return NextResponse.redirect(new URL('/Blog/Login', request.url))
-        }
-    } catch (error: any) {
-        console.error("Failed to fetch authorisation", error);
+        if (!response.ok) return unauthorized();
+    } catch {
+        return unauthorized();
     }
 
     return NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-    matcher: '/Blog/Dashboard/:path*',
-}
+    matcher: [
+        '/Blog/Dashboard/:path*',
+        '/api/posts/CreatePost',
+        '/api/posts/UpdatePost/:path*',
+        '/api/posts/dashboard/:path*',
+    ],
+};
