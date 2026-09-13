@@ -50,8 +50,8 @@ test.each([undefined, null, 1, {}, [], '', '   '])('rejects non-text or empty fi
 });
 
 test('enforces the existing title length limit', () => {
-    expect(validateTitle('a'.repeat(25)).error).toBeUndefined();
-    expect(validateTitle('a'.repeat(26)).error).toBeDefined();
+    expect(validateTitle('a'.repeat(120)).error).toBeUndefined();
+    expect(validateTitle('a'.repeat(121)).error).toBeDefined();
 });
 
 test('propagates failed inserts', async () => {

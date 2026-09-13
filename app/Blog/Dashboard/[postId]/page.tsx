@@ -1,36 +1,21 @@
-'use client'
-
-import React, { useEffect, useState } from "react";
-import PostForm from "./components/PostForm";
-import { BlogPost } from "@/backend/interfaces";
-
+'use client';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { BlogPost } from '@/backend/interfaces';
+import PostEditor from '../components/PostEditor';
 export default function Page({ params }: { params: { postId: string } }) {
     const [post, setPost] = useState<BlogPost | null>(null);
-
+    const [error, setError] = useState('');
     useEffect(() => {
-        const fetchPost = async () => {
-
-            try {
-                const res = await fetch(`/api/posts/dashboard/${params.postId}`);
-                if (!res.ok) {
-                    throw Error("Failed to fetch post");
-                }   
-
-                const data = await res.json();
-                setPost(data.post);
-            } catch (e: any) {
-                throw Error("Something went wrong fetching post :(", e);
-            }
-        }
-
-        fetchPost();
+        const controller = new AbortController();
+        setPost(null); setError('');
+        fetch(`/api/posts/dashboard/${params.postId}`, { signal: controller.signal, cache: 'no-store' })
+            .then(async response => { if (!response.ok) throw new Error(response.status === 401 ? 'Your session expired. Please sign in again.' : 'This entry could not be loaded.'); return response.json(); })
+            .then(data => setPost(data.post))
+            .catch(error => { if (!controller.signal.aborted) setError(error.message); });
+        return () => controller.abort();
     }, [params.postId]);
-    
-    return (
-        <>
-            <div>
-                <PostForm title={post ? post.title : ''} author={post ? post.author : ''} content={post ? post.content : ''} _id={post ? post._id : ''}/>
-            </div>
-        </>
-    )
+    if (error) return <main className="blog-wrap"><p role="alert" className="blog-error">{error}</p><Link href="/Blog/Dashboard" className="blog-secondary mt-5">Back to dashboard</Link><Link href="/Blog/Login" className="blog-secondary ml-3">Sign in</Link></main>;
+    if (!post) return <main className="blog-wrap"><p role="status" className="blog-panel">Loading your entry…</p></main>;
+    return <PostEditor key={post._id} post={post} />;
 }

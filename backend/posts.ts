@@ -1,6 +1,6 @@
 import { Db, ObjectId } from 'mongodb';
 import { connectToDatabase } from '@/app/lib/mongodb';
-import sanitizeHtml from 'sanitize-html';
+import { renderMarkdown } from './markdown';
 
 export class HttpError extends Error {
     constructor(message: string, public statusCode: number) {
@@ -31,24 +31,14 @@ export const getPost = async (db: Db, postId: string) => {
     const post = await getPostMarkdown(db, postId);
     if (!post) return null;
 
-    const showdown = require('showdown');
-    const converter = new showdown.Converter({ headerLevelStart: 3 });
-    const content = sanitizeHtml(converter.makeHtml(post.content), {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-        allowedAttributes: {
-            ...sanitizeHtml.defaults.allowedAttributes,
-            img: ['src', 'alt'],
-        },
-    });
-
-    return { ...post, content };
+    return { ...post, content: renderMarkdown(post.content) };
 };
 
 export const validateTitle = (title: unknown) => {
     if (typeof title !== 'string' || title.trim() === '') {
         return { error: 'invalid title: required' };
     }
-    if (title.length > 25) return { error: 'invalid title: too long' };
+    if (title.length > 120) return { error: 'invalid title: too long' };
     return { title };
 };
 
@@ -61,6 +51,7 @@ export const validateContent = (content: unknown) => {
     if (typeof content !== 'string' || content.trim() === '') {
         return { error: 'invalid content: required' };
     }
+    if (content.length > 200000) return { error: 'invalid content: too long' };
     return { content };
 };
 

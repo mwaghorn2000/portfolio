@@ -1,29 +1,18 @@
-import { connectToDatabase } from "@/app/lib/mongodb"
+import { connectToDatabase } from '@/app/lib/mongodb';
 import { validateLogin } from '@/backend/auth';
-import { NextResponse, NextRequest } from "next/server";
-
-export async function POST(
-    request: NextRequest
-) {
-    const { db } = await connectToDatabase();
-
-    const data = await request.json();
-
-    const loginStatus = await validateLogin(db, data.username, data.password);
-
-    if (loginStatus.message === "Invalid Credentials") {
-        return NextResponse.json(
-            {
-                Error: 'Invalid Credentials'
-            },
-            { status: 401 }
-        )
-    } else {
-        const response = NextResponse.json(
-            { token: await loginStatus.token },
-            { status: 200 }
-        )
-
-        return response;
+import { NextResponse, NextRequest } from 'next/server';
+export async function POST(request: NextRequest) {
+    let data;
+    try { data = await request.json(); } catch { return NextResponse.json({ error: 'Invalid request' }, { status: 400 }); }
+    if (!data || typeof data.username !== 'string' || typeof data.password !== 'string' || !data.username.trim() || !data.password) {
+        return NextResponse.json({ error: 'Username and password are required' }, { status: 400 });
     }
+    try {
+        const { db } = await connectToDatabase();
+        const result = await validateLogin(db, data.username, data.password);
+        if (!result.token) return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
+        const response = NextResponse.json({ message: 'Signed in' });
+        response.cookies.set('token', result.token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'lax', path: '/', maxAge: 86400 });
+        return response;
+    } catch { return NextResponse.json({ error: 'Sign-in unavailable' }, { status: 500 }); }
 }
